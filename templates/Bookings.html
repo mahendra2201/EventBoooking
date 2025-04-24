@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Current Bookings</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/static/css/Bookings.css">
+</head>
+<body>
+    <div class="header">
+        <div class="welcome-message">
+            Welcome back, <span class="username">{{ filtered_username }}</span>
+        </div>
+        <div class="nav-links">
+            <a href="/previous-bookings?username={{ filtered_username }}" class="nav-link"><i class="fas fa-history"></i> Booking History</a>
+            <a href="/home?username={{ filtered_username }}" class="nav-link"><i class="fas fa-home"></i> Home</a>
+            <a href="/logout" class="nav-link logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <h1>Current Bookings</h1>
+
+        <div class="date-header">
+            Bookings for: {{ current_date }}
+        </div>
+
+        {% if bookings %}
+            {% for booking in bookings %}
+            <div class="booking-card">
+                <!-- Header -->
+                <div class="booking-header">
+                    <h2>{{ booking.service_name }}</h2>
+                    <span class="booking-id">ID: {{ booking._id }}</span>
+                </div>
+
+                <!-- Sub-header -->
+                <div class="booking-header">
+                    <div>
+                        <span class="booking-status status-{{ booking.status }}">
+                            {{ booking.status|capitalize }}
+                        </span>
+                    </div>
+                    <div>
+                        <strong>Booked at:</strong> {{ booking.booking_timestamp.strftime('%H:%M') }}
+                    </div>
+                </div>
+
+                <!-- Details -->
+                <div class="booking-details">
+                    <div class="detail-item">
+                        <span class="detail-label">Customer:</span> {{ booking.username }}
+                    </div>
+
+                    <div class="detail-item">
+                        <span class="detail-label">Event Date:</span> {{ booking.date }}
+                    </div>
+
+                    <div class="detail-item">
+                        <span class="detail-label">Price Estimate:</span> {{ booking.price_estimate }}
+                    </div>
+
+                    {% if booking.guests %}
+                    <div class="detail-item">
+                        <span class="detail-label">Guests:</span> {{ booking.guests }}
+                    </div>
+                    {% endif %}
+
+                    {% if booking.duration %}
+                    <div class="detail-item">
+                        <span class="detail-label">Duration:</span> {{ booking.duration }}
+                    </div>
+                    {% endif %}
+
+                    {% if booking.mobile_number %}
+                    <div class="detail-item">
+                        <span class="detail-label">Mobile Number:</span> {{ booking.mobile_number }}
+                    </div>
+                    {% endif %}
+                </div>
+
+                <!-- Special Requirements -->
+                {% if booking.special_requirements %}
+                <div class="detail-item" style="margin-top: 15px;">
+                    <span class="detail-label">Special Requirements:</span><br>
+                    {{ booking.special_requirements }}
+                </div>
+                {% endif %}
+            </div>
+            {% endfor %}
+        {% else %}
+            <div class="no-bookings">
+                No bookings found for today.
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>

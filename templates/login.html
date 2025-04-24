@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Booking - Login</title>
+    <link rel="stylesheet" href="/static/css/login.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="background-container">
+        <div class="floating-form-container">
+            <div class="form-header">
+                <h1>Welcome Back</h1>
+                <p>Login to access your event bookings</p>
+                <div class="social-login">
+                    <a href="#" class="social-btn google">
+                        <i class="fab fa-google"></i>
+                    </a>
+                    <a href="#" class="social-btn facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="social-btn twitter">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                </div>
+                <div class="divider">
+                    <span>or</span>
+                </div>
+            </div>
+                        <!-- Inside login.html -->
+                        {% if error %}
+                        <p style="color: red;">{{ error }}</p>
+               {% endif %}
+   
+
+            
+            <form class="login-form" action="/user_login" method="POST">
+                <div class="form-group">
+                    <i class="fas fa-envelope icon"></i>
+                    <input type="email" id="email" name="email" placeholder="Email Address" required>
+                </div>
+                
+                <div class="form-group">
+                    <i class="fas fa-lock icon"></i>
+                    <input type="password" id="password" name="password" placeholder="Password" required>
+                    <i class="fas fa-eye-slash toggle-password" onclick="togglePassword()"></i>
+                </div>
+                
+                <div class="form-options">
+                    <label class="remember-me">
+                        <input type="checkbox" name="remember">
+                        <span class="checkmark"></span>
+                        Remember me
+                    </label>
+                    <a href="/forgot_password" class="forgot-password">Forgot password?</a>
+                </div>
+                
+                <button type="submit" class="login-btn">
+                    <span>Login</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+            </form>
+            
+            <div class="register-link">
+                Don't have an account? <a href="/register">Sign Up</a>
+            </div>
+        </div>
+        
+        <div class="background-overlay"></div>
+        <div class="floating-elements">
+            <div class="floating-icon" style="top: 20%; left: 10%;">
+                <i class="fas fa-ticket-alt"></i>
+            </div>
+            <div class="floating-icon" style="top: 70%; left: 80%;">
+                <i class="fas fa-music"></i>
+            </div>
+            <div class="floating-icon" style="top: 40%; left: 85%;">
+                <i class="fas fa-calendar-alt"></i>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function togglePassword() {
+            const password = document.getElementById('password');
+            const icon = document.querySelector('.toggle-password');
+            if (password.type === 'password') {
+                password.type = 'text';
+                icon.classList.replace('fa-eye-slash', 'fa-eye');
+            } else {
+                password.type = 'password';
+                icon.classList.replace('fa-eye', 'fa-eye-slash');
+            }
+        }
+    </script>
+</body>
+</html>

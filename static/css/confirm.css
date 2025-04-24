@@ -1,0 +1,109 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f5f9f5;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    color: #333;
+}
+
+.confirmation-box {
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 100, 0, 0.1);
+    padding: 40px;
+    max-width: 500px;
+    width: 90%;
+    text-align: center;
+    border-top: 5px solid #4CAF50;
+}
+
+h1 {
+    color: #2E7D32;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+h1::before {
+    content: "\f00c";
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    display: inline-block;
+    margin-right: 15px;
+    color: #4CAF50;
+}
+
+p {
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 25px;
+}
+
+.booking-details {
+    background-color: #f0f7f0;
+    border-left: 4px solid #4CAF50;
+    padding: 20px;
+    border-radius: 0 8px 8px 0;
+    margin: 25px 0;
+    text-align: left;
+}
+
+.booking-details h3 {
+    color: #2E7D32;
+    margin-top: 0;
+    font-size: 1.3em;
+}
+
+.booking-details p {
+    margin: 10px 0;
+    display: flex;
+    align-items: center;
+}
+
+.booking-details strong {
+    color: #2E7D32;
+    min-width: 120px;
+    display: inline-block;
+}
+
+.booking-details p::before {
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    margin-right: 10px;
+    color: #4CAF50;
+    width: 20px;
+    text-align: center;
+}
+
+.booking-details p:nth-child(2)::before { content: "\f073"; } /* calendar */
+.booking-details p:nth-child(3)::before { content: "\f05d"; } /* badge */
+.booking-details p:nth-child(4)::before { content: "\f02b"; } /* id badge */
+.booking-details p:nth-child(5)::before { content: "\f53d"; } /* dollar sign */
+
+.button {
+    display: inline-block;
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 25px;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    margin-top: 15px;
+}
+
+.button:hover {
+    background-color: #3e8e41;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 100, 0, 0.2);
+}
+
+.button::before {
+    content: "\f015";
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    margin-right: 10px;
+}

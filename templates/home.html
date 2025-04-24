@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premiere Events | Welcome</title>
+    <link rel="stylesheet" href="/static/css/home.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="header">
+        <div class="welcome-message">
+            Welcome back, <span class="username">{{ username }}</span>
+        </div>
+        <div class="nav-links">
+            <a href="/previous-bookings?username={{ username }}" class="nav-link"><i class="fas fa-history"></i> Booking History</a>
+            <a href="/current-bookings?username={{ username }}" class="nav-link"><i class="fas fa-calendar-check"></i> Current Reservations</a>
+            <a href="/logout" class="nav-link logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <h1 class="page-title">Exclusive Event Experiences</h1>
+        <p class="page-subtitle">Book your perfect gathering with our premium services</p>
+        
+        <div class="services">
+            <!-- Service 1 -->
+            <div class="service-card">
+                <div class="card-badge">Popular</div>
+                <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0" alt="Gourmet Dining" class="service-image">
+                <form class="service-form" action="/book-service/1" method="post">
+                    <input type="hidden" name="username" value="{{username}}">
+                    <div class="service-content">
+                        <h3 class="service-title">Gourmet Family Dining</h3>
+                        <p class="service-description">Exquisite multi-course meals in an elegant private setting</p>
+                        
+                        <div class="form-group">
+                            <label for="date-1"><i class="far fa-calendar-alt"></i> Date</label>
+                            <input type="date" id="date-1" name="date" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="guests-1"><i class="fas fa-users"></i> Number of Guests</label>
+                            <input type="number" id="guests-1" name="guests" min="1" max="50" required>
+                        </div>
+                        
+                        <div class="service-footer">
+                            <span class="service-price">From $89/person</span>
+                            <button type="submit" class="book-now">
+                                <i class="fas fa-lock"></i> Secure Reservation
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            
+            <!-- Service 2 -->
+            <div class="service-card">
+                <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f" alt="Corporate Meeting" class="service-image">
+                <form class="service-form" action="/book-service/2" method="post">
+                    <input type="hidden" name="username" value="{{username}}">
+                    <div class="service-content">
+                        <h3 class="service-title">Executive Board Retreat</h3>
+                        <p class="service-description">Premium meeting spaces with full AV support and catering</p>
+                        
+                        <div class="form-group">
+                            <label for="date-2"><i class="far fa-calendar-alt"></i> Date</label>
+                            <input type="date" id="date-2" name="date" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="duration-2"><i class="far fa-clock"></i> Duration (days)</label>
+                            <input type="number" id="duration-2" name="duration" min="1" max="7" required>
+                        </div>
+                        
+                        <div class="service-footer">
+                            <span class="service-price">From $1,200/day</span>
+                            <button type="submit" class="book-now">
+                                <i class="fas fa-lock"></i> Secure Reservation
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            
+            <!-- Service 3 -->
+            <div class="service-card">
+                <div class="card-badge">New</div>
+                <img src="https://images.unsplash.com/photo-1555244162-803834f70033" alt="Team Celebration" class="service-image">
+                <form class="service-form" action="/book-service/3" method="post">
+                    <input type="hidden" name="username" value="{{username}}">
+                    <div class="service-content">
+                        <h3 class="service-title">Corporate Celebration Package</h3>
+                        <p class="service-description">Tailored team appreciation events with premium dining</p>
+                        
+                        <div class="form-group">
+                            <label for="date-3"><i class="far fa-calendar-alt"></i> Date</label>
+                            <input type="date" id="date-3" name="date" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="employees-3"><i class="fas fa-user-tie"></i> Number of Employees</label>
+                            <input type="number" id="employees-3" name="employees" min="5" max="200" required>
+                        </div>
+                        
+                        <div class="service-footer">
+                            <span class="service-price">Custom Pricing</span>
+                            <button type="submit" class="book-now">
+                                <i class="fas fa-lock"></i> Secure Reservation
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            
+            <!-- Service 4 -->
+            <div class="service-card">
+                <img src="https://images.unsplash.com/photo-1513151233558-d860c5398176" alt="Birthday Party" class="service-image">
+                <form class="service-form" action="/book-service/4" method="post">
+                    <input type="hidden" name="username" value="{{username}}">
+                    <div class="service-content">
+                        <h3 class="service-title">Signature Birthday Experience</h3>
+                        <p class="service-description">Custom celebrations with dedicated event coordination</p>
+                        
+                        <div class="form-group">
+                            <label for="date-4"><i class="far fa-calendar-alt"></i> Date</label>
+                            <input type="date" id="date-4" name="date" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="theme-4"><i class="fas fa-birthday-cake"></i> Theme</label>
+                            <select id="theme-4" name="theme" required>
+                                <option value="">Select a theme</option>
+                                <option value="elegant">Elegant Evening</option>
+                                <option value="vintage">Vintage Celebration</option>
+                                <option value="modern">Modern Chic</option>
+                                <option value="custom">Custom Theme</option>
+                            </select>
+                        </div>
+                        
+                        <div class="service-footer">
+                            <span class="service-price">From $1,500</span>
+                            <button type="submit" class="book-now">
+                                <i class="fas fa-lock"></i> Secure Reservation
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            
+            <!-- Service 5 -->
+            <div class="service-card">
+                <img src="https://images.unsplash.com/photo-1527529482837-4698179dc6ce" alt="Family Gathering" class="service-image">
+                <form class="service-form" action="/book-service/5" method="post">
+                    <input type="hidden" name="username" value="{{username}}">
+                    <div class="service-content">
+                        <h3 class="service-title">Generational Gathering Package</h3>
+                        <p class="service-description">Multi-generational family events with customized menus</p>
+                        
+                        <div class="form-group">
+                            <label for="date-5"><i class="far fa-calendar-alt"></i> Date</label>
+                            <input type="date" id="date-5" name="date" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="family-size-5"><i class="fas fa-family"></i> Family Size</label>
+                            <input type="number" id="family-size-5" name="family_size" min="5" max="100" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="dietary-5"><i class="fas fa-utensils"></i> Dietary Requirements</label>
+                            <textarea id="dietary-5" name="dietary_requirements" placeholder="Any special dietary needs?"></textarea>
+                        </div>
+                        
+                        <div class="service-footer">
+                            <span class="service-price">From $2,000</span>
+                            <button type="submit" class="book-now">
+                                <i class="fas fa-lock"></i> Secure Reservation
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            
+            <!-- Service 6 -->
+            <div class="service-card">
+                <div class="card-badge">Luxury</div>
+                <img src="https://images.unsplash.com/photo-1519671482749-fd09be7ccebf" alt="VIP Event" class="service-image">
+                <form class="service-form" action="/book-service/6" method="post">
+                    <input type="hidden" name="username" value="{{username}}">
+                    <div class="service-content">
+                        <h3 class="service-title">Platinum Private Event Suite</h3>
+                        <p class="service-description">Ultimate VIP experience with dedicated staff and chef</p>
+                        
+                        <div class="form-group">
+                            <label for="date-6"><i class="far fa-calendar-alt"></i> Date</label>
+                            <input type="date" id="date-6" name="date" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="guests-6"><i class="fas fa-user-friends"></i> Number of VIP Guests</label>
+                            <input type="number" id="guests-6" name="guests" min="1" max="20" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="requirements-6"><i class="fas fa-star"></i> Special Requirements</label>
+                            <textarea id="requirements-6" name="special_requirements" placeholder="Enter any special requests"></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="contact-6"><i class="fas fa-phone-alt"></i> VIP Contact Number</label>
+                            <input type="tel" id="contact-6" name="contact_number" required>
+                        </div>
+                        
+                        <div class="service-footer">
+                            <span class="service-price">From $5,000</span>
+                            <button type="submit" class="book-now">
+                                <i class="fas fa-lock"></i> Secure Reservation
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating Contact Button -->
+    <a href="tel:+1234567890" class="floating-contact">
+        <i class="fas fa-phone-alt"></i>
+    </a>
+
+    <script>
+        // Set minimum date to today for all date inputs
+        document.addEventListener('DOMContentLoaded', function() {
+            const today = new Date().toISOString().split('T')[0];
+            document.querySelectorAll('input[type="date"]').forEach(input => {
+                input.min = today;
+            });
+            
+            // Form submission handling - now handled by server
+            document.querySelectorAll('.service-form').forEach(form => {
+                form.addEventListener('submit', function(e) {
+                    // Client-side validation can be added here if needed
+                    // The actual submission is now handled by the form's action attribute
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Booking - Register</title>
+    <link rel="stylesheet" href="/static/css/register.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="form-container">
+            <h1>Create Account</h1>
+            <p>Join us to book your next event!</p>
+
+            <!-- Inside register.html -->
+            {% if error %}
+                     <p style="color: red;">{{ error }}</p>
+            {% endif %}
+
+            
+            <form class="register-form" action="/user_register" method="POST">
+                <div class="form-group username">
+                    <input type="text" id="username" name="username" required>
+                    <label for="username">Username</label>
+                </div>
+                
+                <div class="form-group name">
+                    <input type="text" id="name" name="name" required>
+                    <label for="name">Full Name</label>
+                </div>
+                
+                <div class="form-group email">
+                    <input type="email" id="email" name="email" required>
+                    <label for="email">Email</label>
+                </div>
+                
+                <div class="form-group mobile">
+                    <input type="tel" id="mobile" name="mobile" required>
+                    <label for="mobile">Mobile Number</label>
+                </div>
+                
+                <div class="form-group password">
+                    <input type="password" id="password" name="password" required>
+                    <label for="password">Password</label>
+                </div>
+                
+                <button type="submit" class="register-btn">Register</button>
+            </form>
+            
+            <div class="login-link">
+                Already have an account? <a href="/login">Sign In</a>
+            </div>
+        </div>
+        
+        <div class="image-container">
+            <img src="/static/images/event_hall.jpg" alt="Event Booking">
+            <div class="image-overlay">
+                <h2>Book Amazing Events</h2>
+                <p>Concerts, Conferences, Sports and more</p>
+                <div class="event-features">
+                    <div class="feature">
+                        <i class="fas fa-music"></i>
+                        <span>Concerts</span>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-music"></i>
+                        <span>Family Dinner</span>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <span>Conferences</span>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-running"></i>
+                        <span>Sports</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
