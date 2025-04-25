@@ -4,79 +4,85 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Previous Bookings - {{ username }}</title>
+    
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="/static/css/previous_bookings.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/static/css/previousbookings.css">
 </head>
 <body>
 
+    <!-- Header -->
     <div class="header">
         <div class="welcome-message">
             Welcome back, <span class="username">{{ username }}</span>
         </div>
         <div class="nav-links">
-            <a href="/current-bookings?username={{ username }}" class="nav-link"><i class="fas fa-calendar-check"></i> Current Reservations</a>
-            <a href="/home?username={{ username }}" class="nav-link"><i class="fas fa-home"></i> Home</a>
-            <a href="/logout" class="nav-link logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            <a href="/current-bookings?username={{ username }}" class="nav-link">
+                <i class="fas fa-calendar-check"></i> Current Reservations
+            </a>
+            <a href="/home?username={{ username }}" class="nav-link">
+                <i class="fas fa-home"></i> Home
+            </a>
+            <a href="/logout" class="nav-link logout">
+                <i class="fas fa-sign-out-alt"></i> Logout
+            </a>
         </div>
     </div>
 
+    <!-- Main Content -->
     <div class="container">
         <h1>Previous Bookings</h1>
-        <div class="user-header">
-            <i class="fas fa-user"></i> {{ username }}
-        </div>
-        
+
         {% if bookings %}
             {% for booking in bookings %}
-            <div class="booking-card">
-                <div class="booking-header">
-                    <h2>{{ booking.service_name }}</h2>
-                    <span class="booking-date">{{ booking.date }}</span>
-                </div>
-                
-                <div class="booking-details">
-                    <!-- Similar structure to your current bookings template -->
+                <div class="booking-card">
+                    <div class="booking-header">
+                        <h2>{{ booking.service_name }}</h2>
+                        <span class="booking-date">{{ booking.date }}</span>
+                    </div>
 
-                    <div class="detail-item">
-                        <span class="detail-label">Customer:</span> {{ booking.username }}
-                    </div>
-                    
-                    <div class="detail-item">
-                        <span class="detail-label">Event Date:</span> {{ booking.date }}
-                    </div>
-                    
-                    <div class="detail-item">
-                        <span class="detail-label">Price Estimate:</span> {{ booking.price_estimate }}
-                    </div>
-                    
-                    {% if booking.guests %}
-                    <div class="detail-item">
-                        <span class="detail-label">Guests:</span> {{ booking.guests }}
-                    </div>
-                    {% endif %}
-                    
-                    {% if booking.duration %}
-                    <div class="detail-item">
-                        <span class="detail-label">Duration:</span> {{ booking.duration }}
-                    </div>
-                    {% endif %}
+                    <div class="booking-details">
+                        <div class="detail-item">
+                            <span class="detail-label">Customer:</span> {{ booking.username }}
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Event Date:</span> {{ booking.date }}
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Price Estimate:</span> {{ booking.price_estimate }}
+                        </div>
 
-                    {% if booking.duration %}
-                    <div class="detail-item">
-                        <span class="detail-label">MobileNumber:</span> {{ booking.mobile_number }}
+                        {% if booking.guests %}
+                        <div class="detail-item">
+                            <span class="detail-label">Guests:</span> {{ booking.guests }}
+                        </div>
+                        {% endif %}
+
+                        {% if booking.duration %}
+                        <div class="detail-item">
+                            <span class="detail-label">Duration:</span> {{ booking.duration }}
+                        </div>
+                        {% endif %}
+
+                        {% if booking.mobile_number %}
+                        <div class="detail-item">
+                            <span class="detail-label">Mobile Number:</span> {{ booking.mobile_number }}
+                        </div>
+                        {% endif %}
+                    </div>
+
+                    {% if booking.special_requirements %}
+                    <div class="detail-item" style="margin-top: 15px;">
+                        <span class="detail-label">Special Requirements:</span><br>
+                        {{ booking.special_requirements }}
                     </div>
                     {% endif %}
                 </div>
-                
-                {% if booking.special_requirements %}
-                <div class="detail-item" style="margin-top: 15px;">
-                    <span class="detail-label">Special Requirements:</span><br>
-                    {{ booking.special_requirements }}
-                </div>
-                {% endif %}
-                </div>
-            </div>
             {% endfor %}
         {% else %}
             <div class="no-bookings">
@@ -85,5 +91,6 @@
             </div>
         {% endif %}
     </div>
+
 </body>
 </html>

@@ -272,26 +272,26 @@ async def get_current_bookings(
     )
 
 #current Bookings
-
 @app.get("/current-bookings", response_class=HTMLResponse)
 async def get_current_bookings(
     request: Request,
     username: str = Query(None, description="Filter bookings by username")
 ):
-    # Get today's date at midnight (00:00)
-    today_midnight = datetime.now().replace(hour=0, minute=0, second=0, microsecond=0)
+    # Get current datetime (including time)
+    now = datetime.now()
     
-    # Base query for current and future bookings
+    # Base query for future bookings (strictly greater than current moment)
     query = {
-        "date": {  # Assuming you have a 'date' field in your bookings
-            "$gte": today_midnight.strftime("%Y-%m-%d")  # Format as string if your dates are stored as strings
+        "date": {
+            "$gt": now  # Using $gt (greater than) instead of $gte (greater than or equal)
         }
     }
     
-    # Alternative if your dates are stored as datetime objects:
+    # If your dates are stored as strings rather than datetime objects:
+    # today_str = now.strftime("%Y-%m-%d")
     # query = {
     #     "date": {
-    #         "$gte": today_midnight
+    #         "$gt": today_str
     #     }
     # }
     
@@ -311,7 +311,7 @@ async def get_current_bookings(
         {
             "request": request,
             "bookings": current_bookings,
-            "current_date": today_midnight.strftime("%Y-%m-%d"),
+            "current_date": now.strftime("%Y-%m-%d"),
             "filtered_username": username
         }
     )

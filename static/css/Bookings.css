@@ -127,7 +127,7 @@
 
 body {
     font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, var(--light-bg) 0%, #FFEDED 100%);
+    background: linear-gradient(135deg, var(--light-bg) 0%, 100%);
     color: var(--dark-text);
     min-height: 100vh;
     padding: 20px;
@@ -161,7 +161,7 @@ h1::after {
 
 .date-header {
     background: linear-gradient(to right, var(--primary-pink), var(--primary-orange));
-    color: white;
+    color:pi;
     padding: 12px 20px;
     border-radius: 8px;
     margin-bottom: 25px;
